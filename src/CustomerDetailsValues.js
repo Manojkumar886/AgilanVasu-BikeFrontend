@@ -30,7 +30,25 @@ export const create=(data)=>
     BikeCustomers.push(data);
 }
 
+
+
 export const list=()=>
 {
+    return BikeCustomers;
+}
+
+
+export const read=(index)=>
+{
+    return BikeCustomers[index];//Arrayname[pos];
+}
+
+
+export const remove=(index)=>
+{
+    BikeCustomers=BikeCustomers.filter((data,ind)=>
+    {
+        return ind!==index;
+    })
     return BikeCustomers;
 }

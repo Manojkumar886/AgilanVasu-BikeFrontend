@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Register } from "./BikeCustomerDetailsForm";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
-import { list } from "./CustomerDetailsValues";
+import { list, remove } from "./CustomerDetailsValues";
+import { Reading } from "./ReadingPage";
 
 export const Homepage=()=>
 {
@@ -10,15 +11,23 @@ export const Homepage=()=>
 
     const[createview,setCreateview]=useState(false)
 
+    const[readview,setReadview]=useState(false)
+
+    const[pos,setPos]=useState(0)
+
+
+
     const result=()=>
     {
         setTemparray(list)
     }
 
-    useEffect(()=>
+   useEffect(
+    ()=>
     {
         result()
-    })
+    }
+   )
 
 
     return(
@@ -35,6 +44,21 @@ export const Homepage=()=>
                     }
                 }
                 >
+                    Back
+                </button>
+
+                </>
+                :
+                (readview)?
+                <> 
+                <Reading  who={pos}/>
+                <button className="btn btn-outline-secondary"
+                onClick={
+                    ()=>
+                    {
+                        setReadview(false)
+                    }
+                }>
                     Back
                 </button>
 
@@ -65,11 +89,12 @@ export const Homepage=()=>
                                 <th>CustomerEmailId</th>
                                 <th>CustomerContactNO</th>
                                 <th>DateofPurchase</th>
+                                <th>Perforamnce(READ,UPDATE,DELETE)</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
-                                temparray.map((data,pos)=>
+                                temparray.map((data,ind)=>
                                 (
                                     <tr>
                                         <td>{data.cusId}</td>
@@ -78,6 +103,27 @@ export const Homepage=()=>
                                         <td>{data.cusContactno}</td>
                                         <td>{data.cusEmail}</td>
                                         <td>{data.Dateofpurchase}</td>
+                                        <td>
+                                            <button className="btn btn-outline-warning"
+                                            onClick={
+                                                ()=>
+                                                {
+                                                    setReadview(true)
+                                                    setPos(ind)
+
+                                                }
+                                            }
+                                            >READ</button>
+                                            <button className="btn btn-outline-primary">UPDATE</button>
+                                            <button className="btn btn-outline-danger"
+                                            onClick={
+                                                ()=>
+                                                {
+                                                 setTemparray(remove(ind))  
+                                                }
+                                            }
+                                            >DELETE</button>
+                                        </td>
                                     </tr>
                                 ))
 

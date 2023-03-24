@@ -29,7 +29,7 @@ export let Register=()=>
     }
     const reset=()=>
     {
-        alert('Rejected successfullu\y...!')
+        alert('Rejected successfully...!')
     }
 
     const register=()=>
