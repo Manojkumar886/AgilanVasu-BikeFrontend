@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Register } from "./BikeCustomerDetailsForm";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
-import { list, remove } from "./CustomerDetailsValues";
+import { FetchExact, list, remove } from "./CustomerDetailsValues";
 import { Reading } from "./ReadingPage";
+import { Updating } from "./UpdatingPage";
 
 export const Homepage=()=>
 {
@@ -14,6 +15,10 @@ export const Homepage=()=>
     const[readview,setReadview]=useState(false)
 
     const[pos,setPos]=useState(0)
+
+    const[updateview,setUpdateview]=useState(false);
+
+    const[obj,setObj]=useState({});
 
 
 
@@ -62,6 +67,18 @@ export const Homepage=()=>
                     Back
                 </button>
 
+                </>
+                :
+                (updateview)?
+                <>
+                <Updating who={pos} mention={obj} />
+                <button className="btn btn-outline-secondary"
+                onClick={()=>
+                {
+                    setUpdateview(false)
+                }}>
+                    Back
+                </button>
                 </>
                 :
 
@@ -114,7 +131,18 @@ export const Homepage=()=>
                                                 }
                                             }
                                             >READ</button>
-                                            <button className="btn btn-outline-primary">UPDATE</button>
+                                            <button className="btn btn-outline-primary"
+                                            onClick={
+                                                ()=>
+                                                {
+                                                    setUpdateview(true)
+                                                    setPos(ind)
+                                                    setObj(FetchExact(data.cusName))
+                                                }
+                                            }
+                                                
+                                            >UPDATE
+                                            </button>
                                             <button className="btn btn-outline-danger"
                                             onClick={
                                                 ()=>

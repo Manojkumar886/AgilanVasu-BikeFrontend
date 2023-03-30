@@ -52,3 +52,17 @@ export const remove=(index)=>
     })
     return BikeCustomers;
 }
+
+export const FetchExact=(name)=>
+{
+    const temp=BikeCustomers.filter((element)=>
+    {
+        return element.cusName===name;
+    })
+    return temp[0];
+}
+
+export const alter=(data,pos)=>
+{
+    BikeCustomers[pos]=data; //arraname[index]=myvalue;   
+}
