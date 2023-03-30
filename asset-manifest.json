@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.a77afb83.css",
-    "main.js": "/static/js/main.b3f3d8e2.js",
-    "static/media/bootstrap-icons.woff?": "/static/media/bootstrap-icons.6959d0d983ee318f8880.woff",
-    "static/media/bootstrap-icons.woff2?": "/static/media/bootstrap-icons.b2e5aab643c6f0fd2da6.woff2",
-    "index.html": "/index.html",
-    "main.a77afb83.css.map": "/static/css/main.a77afb83.css.map",
-    "main.b3f3d8e2.js.map": "/static/js/main.b3f3d8e2.js.map"
+    "main.css": "/AgilanVasu-BikeFrontend/static/css/main.2938eca4.css",
+    "main.js": "/AgilanVasu-BikeFrontend/static/js/main.b3f3d8e2.js",
+    "static/media/bootstrap-icons.woff?": "/AgilanVasu-BikeFrontend/static/media/bootstrap-icons.6959d0d983ee318f8880.woff",
+    "static/media/bootstrap-icons.woff2?": "/AgilanVasu-BikeFrontend/static/media/bootstrap-icons.b2e5aab643c6f0fd2da6.woff2",
+    "index.html": "/AgilanVasu-BikeFrontend/index.html",
+    "main.2938eca4.css.map": "/AgilanVasu-BikeFrontend/static/css/main.2938eca4.css.map",
+    "main.b3f3d8e2.js.map": "/AgilanVasu-BikeFrontend/static/js/main.b3f3d8e2.js.map"
   },
   "entrypoints": [
-    "static/css/main.a77afb83.css",
+    "static/css/main.2938eca4.css",
     "static/js/main.b3f3d8e2.js"
   ]
 }
