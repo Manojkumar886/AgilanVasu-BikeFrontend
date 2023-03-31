@@ -4,7 +4,7 @@ import './Images.css'
 import { useState } from 'react';
 import { alter } from './CustomerDetailsValues';
  
-export let Updating=(myvalue)=>
+export let Updating1=(myvalue)=>
 {
     const[pos,setPos]=useState(myvalue.who)
     const[process,setProcess]=useState({

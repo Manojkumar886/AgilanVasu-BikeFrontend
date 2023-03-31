@@ -4,6 +4,8 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import { FetchExact, list, remove } from "./CustomerDetailsValues";
 import { Reading } from "./ReadingPage";
 import { Updating } from "./UpdatingPage";
+import { Container, Nav, Navbar } from "react-bootstrap";
+import ElectricMopedIcon from '@mui/icons-material/ElectricMoped';
 
 export const Homepage=()=>
 {
@@ -36,136 +38,153 @@ export const Homepage=()=>
 
 
     return(
-        <div className="container">
-            {
-                (createview) ?
-                <>
-                <Register/>
-                <button className="btn btn-outline-secondary"
-                onClick={
-                    ()=>
-                    {
-                        setCreateview(false)
-                    }
-                }
-                >
-                    Back
-                </button>
+        <Navbar bg="primary" expand="lg">
+            <Container>
+                <Navbar.Brand  href="/" ><ElectricMopedIcon></ElectricMopedIcon>ZealousBikeServiceCentre</Navbar.Brand>
+                <Navbar.Toggle aria-controls="manoj"/>
+                <Navbar.Collapse id="manoj">
+                    <Nav>
+                        <Nav.Link href="/create"> NEW</Nav.Link>
+                        <Nav.Link href="/update">UPDATE</Nav.Link>
+                        <Nav.Link>READ</Nav.Link>
+                    </Nav>
 
-                </>
-                :
-                (readview)?
-                <> 
-                <Reading  who={pos}/>
-                <button className="btn btn-outline-secondary"
-                onClick={
-                    ()=>
-                    {
-                        setReadview(false)
-                    }
-                }>
-                    Back
-                </button>
+                </Navbar.Collapse>
 
-                </>
-                :
-                (updateview)?
-                <>
-                <Updating who={pos} mention={obj} />
-                <button className="btn btn-outline-secondary"
-                onClick={()=>
-                {
-                    setUpdateview(false)
-                }}>
-                    Back
-                </button>
-                </>
-                :
 
-                <>
-                <button  className="btn btn-outline-success"
-                onClick={
-                    ()=>
-                    {
-                        setCreateview(true)
-                    }
-                }
-                >
-                    Create new customer
-                </button>
+             </Container>
 
-                <br></br>
-                <h1 align="center">List All Customer Details</h1>
-                <div className="row justify-content-center">
-                    <table className="bg-info col-lg-8 col-md-10 col-sm-12 table table-striped p-3">
-                        <thead>
-                            <tr>
-                                <th>CustomerId</th>
-                                <th>customerBikeno</th>
-                                <th>CustomerName</th>
-                                <th>CustomerEmailId</th>
-                                <th>CustomerContactNO</th>
-                                <th>DateofPurchase</th>
-                                <th>Perforamnce(READ,UPDATE,DELETE)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                temparray.map((data,ind)=>
-                                (
-                                    <tr>
-                                        <td>{data.cusId}</td>
-                                        <td>{data.cusBikeno}</td>
-                                        <td>{data.cusName}</td>
-                                        <td>{data.cusContactno}</td>
-                                        <td>{data.cusEmail}</td>
-                                        <td>{data.Dateofpurchase}</td>
-                                        <td>
-                                            <button className="btn btn-outline-warning"
-                                            onClick={
-                                                ()=>
-                                                {
-                                                    setReadview(true)
-                                                    setPos(ind)
+        </Navbar>
+        // <div className="container">
+        //     {
+        //         (createview) ?
+        //         <>
+        //         <Register/>
+        //         <button className="btn btn-outline-secondary"
+        //         onClick={
+        //             ()=>
+        //             {
+        //                 setCreateview(false)
+        //             }
+        //         }
+        //         >
+        //             Back
+        //         </button>
 
-                                                }
-                                            }
-                                            >READ</button>
-                                            <button className="btn btn-outline-primary"
-                                            onClick={
-                                                ()=>
-                                                {
-                                                    setUpdateview(true)
-                                                    setPos(ind)
-                                                    setObj(FetchExact(data.cusName))
-                                                }
-                                            }
+        //         </>
+        //         :
+        //         (readview)?
+        //         <> 
+        //         <Reading  who={pos}/>
+        //         <button className="btn btn-outline-secondary"
+        //         onClick={
+        //             ()=>
+        //             {
+        //                 setReadview(false)
+        //             }
+        //         }>
+        //             Back
+        //         </button>
+
+        //         </>
+        //         :
+        //         (updateview)?
+        //         <>
+        //         <Updating who={pos} mention={obj} />
+        //         <button className="btn btn-outline-secondary"
+        //         onClick={()=>
+        //         {
+        //             setUpdateview(false)
+        //         }}>
+        //             Back
+        //         </button>
+        //         </>
+        //         :
+
+        //         <>
+        //         <button  className="btn btn-outline-success"
+        //         onClick={
+        //             ()=>
+        //             {
+        //                 setCreateview(true)
+        //             }
+        //         }
+        //         >
+        //             Create new customer
+        //         </button>
+
+        //         <br></br>
+        //         <h1 align="center">List All Customer Details</h1>
+        //         <div className="row justify-content-center">
+        //             <table className="bg-info col-lg-8 col-md-10 col-sm-12 table table-striped p-3">
+        //                 <thead>
+        //                     <tr>
+        //                         <th>CustomerId</th>
+        //                         <th>customerBikeno</th>
+        //                         <th>CustomerName</th>
+        //                         <th>CustomerEmailId</th>
+        //                         <th>CustomerContactNO</th>
+        //                         <th>DateofPurchase</th>
+        //                         <th>Perforamnce(READ,UPDATE,DELETE)</th>
+        //                     </tr>
+        //                 </thead>
+        //                 <tbody>
+        //                     {
+        //                         temparray.map((data,ind)=>
+        //                         (
+        //                             <tr>
+        //                                 <td>{data.cusId}</td>
+        //                                 <td>{data.cusBikeno}</td>
+        //                                 <td>{data.cusName}</td>
+        //                                 <td>{data.cusContactno}</td>
+        //                                 <td>{data.cusEmail}</td>
+        //                                 <td>{data.Dateofpurchase}</td>
+        //                                 <td>
+        //                                     <button className="btn btn-outline-warning"
+        //                                     onClick={
+        //                                         ()=>
+        //                                         {
+        //                                             setReadview(true)
+        //                                             setPos(ind)
+
+        //                                         }
+        //                                     }
+        //                                     >READ</button>
+        //                                     <button className="btn btn-outline-primary"
+        //                                     onClick={
+        //                                         ()=>
+        //                                         {
+        //                                             setUpdateview(true)
+        //                                             setPos(ind)
+        //                                             setObj(FetchExact(data.cusName))
+        //                                         }
+        //                                     }
                                                 
-                                            >UPDATE
-                                            </button>
-                                            <button className="btn btn-outline-danger"
-                                            onClick={
-                                                ()=>
-                                                {
-                                                 setTemparray(remove(ind))  
-                                                }
-                                            }
-                                            >DELETE</button>
-                                        </td>
-                                    </tr>
-                                ))
+        //                                     >UPDATE
+        //                                     </button>
+        //                                     <button className="btn btn-outline-danger"
+        //                                     onClick={
+        //                                         ()=>
+        //                                         {
+        //                                          setTemparray(remove(ind))  
+        //                                         }
+        //                                     }
+        //                                     >DELETE</button>
+        //                                 </td>
+        //                             </tr>
+        //                         ))
 
-                            }
+        //                     }
 
-                        </tbody>
-                    </table>
+        //                 </tbody>
+        //             </table>
 
-                </div>
-                </>
+        //         </div>
+        //         </>
 
 
-            }
-        </div>
+        //     }
+        // </div>
 
 
     );
