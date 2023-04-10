@@ -4,7 +4,9 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 
 import './Images.css'
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Updating1 } from "./UpdatingPage";
+import { ListallbikeDetails } from "./ListallBikeValues";
+import { Newservicedetail } from "./NewserviceDetails";
+import { ListallServiceDetails} from "./ListallServiceDetails";
 
 function App() {
   return(
@@ -12,8 +14,10 @@ function App() {
     <BrowserRouter>
     <Homepage/>
     <Routes>
-      <Route path="create" exact element={<Register/>} />
-      <Route path="update" exact element={<Updating1/>}/>
+      <Route path="createbikedetails" exact element={<Register/>}/>
+      <Route path="listallbikedetails" exact element={<ListallbikeDetails/>}/>
+      <Route path="createservicedetail" exact element={<Newservicedetail/>} />
+      <Route path="listallservicedetails" exact element={<ListallServiceDetails/>}/>
     </Routes>
     </BrowserRouter>
    
