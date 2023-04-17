@@ -28,7 +28,10 @@ export const Homepage=()=>{
                         </NavDropdown>
                         </Nav>
                         <Nav className="ms-5">
-                        <button className="btn btn-outline-dark me-5 "   >
+                        <button className="btn btn-outline-dark me-5 " onClick={()=>{
+                            sessionStorage.removeItem("auth")
+                            window.location.assign("/");
+                        }}   >
                                 Logout
                         </button>
                         </Nav>

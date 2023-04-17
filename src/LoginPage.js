@@ -1,11 +1,10 @@
 import { useState } from "react"
 import { Register } from "./BikeCustomerDetailsForm"
+import { Loginperforamnce } from "./Connect"
 
 
 export const Login=()=>
 {
-    const[cview,setCview]=useState(false)
-
     const[user,setUser]=useState({
         "username":"",
         "password":""
@@ -21,17 +20,15 @@ export const Login=()=>
         })
     }
 
+    const onlog=async()=>
+    {
+        await Loginperforamnce(user)
+        window.location.assign("/");
+
+    }
 
 
     return(
-        <>
-            {
-            (cview)?
-            <>
-                {alert("new will call")}
-                <Register />
-            </>
-            :
             <>
                 <div className="container">
                     <div className="row justify-content-center mt-5">
@@ -53,7 +50,7 @@ export const Login=()=>
                                 className="form-control" />
                             </div>
                             <div className="row justify-content-around mt-3">
-                                <button className="col-3 btn btn-outline-primary" >
+                                <button className="col-3 btn btn-outline-primary" onClick={onlog} >
                                     <i class="bi bi-box-arrow-in-right"></i>Login
                                 </button>
                                 <button className="col-3 btn btn-outline-dark" type="reset">
@@ -64,8 +61,6 @@ export const Login=()=>
                         </div>
                     </div>
                 </div>
-            </>
-            }
         </>
     )
 }

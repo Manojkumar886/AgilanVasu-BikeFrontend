@@ -7,11 +7,15 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ListallbikeDetails } from "./ListallBikeValues";
 import { Newservicedetail } from "./NewserviceDetails";
 import { ListallServiceDetails} from "./ListallServiceDetails";
+import { Login } from "./LoginPage";
 
 function App() {
   return(
     <>
-    <BrowserRouter>
+   {
+    (sessionStorage.getItem("auth"))?
+    <>
+     <BrowserRouter>
     <Homepage/>
     <Routes>
       <Route path="createbikedetails" exact element={<Register/>}/>
@@ -20,6 +24,12 @@ function App() {
       <Route path="listallservicedetails" exact element={<ListallServiceDetails/>}/>
     </Routes>
     </BrowserRouter>
+    </>
+    :
+    <>
+    <Login/>
+    </>
+   }
    
     </>
     );
