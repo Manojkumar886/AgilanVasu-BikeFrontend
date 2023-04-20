@@ -28,3 +28,23 @@ export const Loginperforamnce=async(object)=>
     }
 
 }
+export const CreateBikeDetails=async(object)=>
+{
+    const t=await axios.post(`${url}/newbikedetails`,object);
+    
+    alert(JSON.stringify(t.data)+" has been added in database")
+    return t;
+}
+
+export const DisplayAllbikevalues=async()=>
+{
+    const t=await axios.get(`${url}/`);
+    return t;
+}
+
+export const readonecustomerdetail=async(id)=>
+{
+
+    const t=await axios.get(`${url}/Listone/${id}`)
+    return t;
+}

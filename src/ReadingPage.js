@@ -1,26 +1,25 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useEffect, useState } from 'react';
 import { read } from './CustomerDetailsValues';
+import { useParams } from 'react-router';
+import { readonecustomerdetail } from './Connect';
 
 
-export const Reading=(mypos)=>
+export const Reading=()=>
 {
-    const [customervalues,setCustomervalues]=useState({
-        "cusId":0,
-        "cusBikeno":"",
-        "cusName":"",
-        "cusContactno":0,
-        "cusEmail":"",
-        "Dateofpurchase":""
-    })
+    const [customervalues,setCustomervalues]=useState({})
+    const {myid}=useParams();
     useEffect(()=>
     {
         callreadingvalues();
     })
 
-    const callreadingvalues=()=>
+    const callreadingvalues=async()=>
     {
-        setCustomervalues(read(mypos.who))
+
+        // setCustomervalues(read(mypos.who))
+        const t=await  readonecustomerdetail(myid);
+        setCustomervalues(t.data);
     }
 
     return(

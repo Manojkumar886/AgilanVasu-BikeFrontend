@@ -8,6 +8,7 @@ import { ListallbikeDetails } from "./ListallBikeValues";
 import { Newservicedetail } from "./NewserviceDetails";
 import { ListallServiceDetails} from "./ListallServiceDetails";
 import { Login } from "./LoginPage";
+import { Reading } from "./ReadingPage";
 
 function App() {
   return(
@@ -22,6 +23,7 @@ function App() {
       <Route path="listallbikedetails" exact element={<ListallbikeDetails/>}/>
       <Route path="createservicedetail" exact element={<Newservicedetail/>} />
       <Route path="listallservicedetails" exact element={<ListallServiceDetails/>}/>
+      <Route path="reading/:myid" exact element={<Reading/>} />
     </Routes>
     </BrowserRouter>
     </>

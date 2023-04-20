@@ -3,8 +3,11 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 import './Images.css'
 import { useState } from 'react';
 import { create } from './CustomerDetailsValues';
+import { useNavigate } from 'react-router';
+import { CreateBikeDetails } from './Connect';
 export let Register=()=>
 {
+    const navi=useNavigate();
     const[process,setProcess]=useState({
         "cusId":0,
         "cusBikeno":"",
@@ -13,7 +16,6 @@ export let Register=()=>
         "cusEmail":"",
         "Dateofpurchase":""
     })
-
     const track=(agi)=>
     {
         const{name,value}=agi.target
@@ -31,11 +33,13 @@ export let Register=()=>
     {
         alert('Rejected successfully...!')
     }
-
-    const register=()=>
+    const register=async()=>
     {
         alert('welcome to zealous Bike service'+JSON.stringify(process))
-        create(process);
+        // create(process);
+        const temp=await CreateBikeDetails(process);
+        alert(temp.data);
+        navi("/ListallbikeDetails")
     }
     return(
         <>
