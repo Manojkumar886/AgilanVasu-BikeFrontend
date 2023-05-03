@@ -1,21 +1,29 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import './Images.css'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { alter } from './CustomerDetailsValues';
+import { useNavigate, useParams } from 'react-router';
+import { readonecustomerdetail, updatecustomerdetails } from './Connect';
  
-export let Updating1=(myvalue)=>
+export let Updating1=()=>
 {
-    const[pos,setPos]=useState(myvalue.who)
-    const[process,setProcess]=useState({
-        "cusId":myvalue.mention.cusId,
-        "cusBikeno":myvalue.mention.cusBikeno,
-        "cusName":myvalue.mention.cusName,
-        "cusContactno":myvalue.mention.cusContactno,
-        "cusEmail":myvalue.mention.cusEmail,
-        "Dateofpurchase":myvalue.mention.Dateofpurchase
+    const {myid}=useParams();
+    const navi=useNavigate();
+
+    const[process,setProcess]=useState({});
+    useEffect(()=>
+    {
+        callreadingvalues();
     })
 
+    const callreadingvalues=async()=>
+    {
+
+        // setCustomervalues(read(mypos.who))
+        const t=await  readonecustomerdetail(myid);
+        setProcess(t.data);
+    }
     const track=(agi)=>
     {
         const{name,value}=agi.target
@@ -34,10 +42,14 @@ export let Updating1=(myvalue)=>
         alert('Rejected successfully...!')
     }
 
-    const update=()=>
+    const update=async()=>
     {
-        alter(process,pos)
-        alert("your value is updated")
+        // alter(process,pos)
+        // alert("your value is updated")
+
+        const t=await updatecustomerdetails(process);
+        alter(t.data);
+        navi("/ListallbikeDetails");
         
     }
     return(
@@ -53,8 +65,8 @@ export let Updating1=(myvalue)=>
                                 <label className="form-label" >CustomerId</label>
                                 <input type="text" 
                                 onChange={track}
+                                name="cusId"
                                 value={process.cusId}
-                                 name="cusId"
                                 className="form-control" />
                             </div>
                             <div className="col">

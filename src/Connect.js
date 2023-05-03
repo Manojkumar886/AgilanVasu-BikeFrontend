@@ -48,3 +48,9 @@ export const readonecustomerdetail=async(id)=>
     const t=await axios.get(`${url}/Listone/${id}`)
     return t;
 }
+
+export const updatecustomerdetails=async(object)=>
+{
+    const t=await axios.put(`${url}/update`,object);
+    return t;
+}

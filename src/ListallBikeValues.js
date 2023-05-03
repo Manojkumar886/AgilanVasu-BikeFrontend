@@ -50,9 +50,7 @@ export const ListallbikeDetails=()=>
                                                         <td>{data.cusEmail}</td>
                                                         <td>{data.Dateofpurchase}</td>
                                                         <td>
-                                                            <Button>
-                                                                UPDATE
-                                                            </Button>
+                                                            <a className="btn btn-outline-primary" href={`updating/${data.cusId}`}>UPDATE</a>
                                                             <Button className='ms-3'>
                                                                 DELETE
                                                             </Button>
