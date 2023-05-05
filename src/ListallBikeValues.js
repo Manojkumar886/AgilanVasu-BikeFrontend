@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import './Images.css'
 import { Button } from 'react-bootstrap';
-import { DisplayAllbikevalues } from './Connect';
+import { DisplayAllbikevalues, deletecustomerdetails } from './Connect';
+import { useNavigate } from 'react-router';
 
 export const ListallbikeDetails=()=>
 {
+    const navi=useNavigate();
     const[allvalues,setAllvalues]=useState([])
 
     const mybikevalue=async()=>
@@ -51,9 +53,17 @@ export const ListallbikeDetails=()=>
                                                         <td>{data.Dateofpurchase}</td>
                                                         <td>
                                                             <a className="btn btn-outline-primary" href={`updating/${data.cusId}`}>UPDATE</a>
-                                                            <Button className='ms-3'>
-                                                                DELETE
-                                                            </Button>
+                                                            <button className="btn btn-outline-danger"
+                                                            onClick={
+                                                                async()=>{
+                                                                    const temp=await deletecustomerdetails(data.cusId)
+                                                                    alert(temp.data+" has been deleted successfully")
+                                                                    navi("/listallbikedetails")
+                                                                }
+                                                            }
+                                                            >
+                                                                Delete
+                                                            </button>
                                                          </td>
                                                     </tr>
 

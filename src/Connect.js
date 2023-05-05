@@ -54,3 +54,11 @@ export const updatecustomerdetails=async(object)=>
     const t=await axios.put(`${url}/update`,object);
     return t;
 }
+
+export const deletecustomerdetails=async(key)=>
+{
+    const temp =await axios.delete(`${url}/Delete/${key}`)
+    return temp;
+
+
+}
